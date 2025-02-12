@@ -138,7 +138,7 @@ class CoTrackerThreeOffline(CoTrackerThreeBase):
 
         for it in range(iters):
             coords = coords.detach()  # B T N 2
-            coords_init = coords.view(B * T, N, 2)
+            coords_init = coords.contiguous().view(B * T, N, 2)
             corr_embs = []
             corr_feats = []
             for i in range(self.corr_levels):
